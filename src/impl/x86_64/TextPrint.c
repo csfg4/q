@@ -1,4 +1,5 @@
 #pragma once
+#include "Typedefs.c"
 #define VGA_MEMORY (uint_8*)0xb8000
 #define VGA_WIDTH 80
 
