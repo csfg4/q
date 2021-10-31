@@ -12,6 +12,11 @@ long_mode_start:
     mov fs, ax
     mov gs, ax
 
+    mov edi, 0xb8000
+    mov rax, 0x1f201f201f201f20
+    mov ecx, 500
+    rep stosq
+
     call kernel_main
 
     hlt
