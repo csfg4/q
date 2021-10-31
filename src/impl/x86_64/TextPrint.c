@@ -6,6 +6,19 @@
 
 uint_16 CursorPosition;
 
+void ClearScreen(uint_64 ClearColour)
+{
+    uint_64 value = 0;
+    value += ClearColour << 8;
+    value += ClearColour << 24;
+    value += ClearColour << 40;
+    value += ClearColour << 56;
+    for (uint_64* i = (uint_64*)VGA_MEMORY; i < (uint_64*)(VGA_MEMORY + 4000); ++i)
+    {
+        *i = value;
+    }
+}
+
 void SetCursorPosition(uint_16 position)
 {
     if (CursorPosition > 2000) CursorPosition = 2000;
