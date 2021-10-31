@@ -1,5 +1,6 @@
 #pragma once
 #include "Typedefs.c"
+#include "TextModeColourCodes.c"
 #define VGA_MEMORY (uint_8*)0xb8000
 #define VGA_WIDTH 80
 
@@ -22,7 +23,7 @@ uint_16 PositionFromCoords(uint_8 x, uint_8 y)
     return y * VGA_WIDTH + x;
 }
 
-void PrintString(const char* str)
+void PrintString(const char* str, uint_8 colour)
 {
     uint_8* charPtr = (uint_8*)str;
     uint_16 index = CursorPosition;
@@ -38,6 +39,7 @@ void PrintString(const char* str)
                 break;
             default:
             *(VGA_MEMORY + index * 2) = *charPtr;
+            *(VGA_MEMORY + index * 2 + 1) = colour;
             ++index;
         }
         ++charPtr;
