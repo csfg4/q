@@ -1,6 +1,6 @@
 void kernel_main()
 {
-    SetCursorPosition(PositionFromCoords(12, 18));
-    PrintString("Hello World!");
+    SetCursorPosition(PositionFromCoords(0, 0));
+    PrintString("Hello World!\n\rThis is on a newline!");
     return;
 }
