@@ -44,3 +44,24 @@ void PrintString(const char* str)
     }
     SetCursorPosition(index);
 }
+
+
+
+char hexToStringOutput[128];
+const char *HexToString(uint_32 value)
+{
+    char *p = hexToStringOutput;
+    int numNibbles = sizeof(uint_32) * 2;
+    for(int t = 0; t < numNibbles; ++t)
+    {
+        int digit = (value & 0xf0000000) >> 28;
+        if(digit < 10)
+            *p++ = digit + '0';
+        else
+            *p++ = (digit - 10) + 'a';
+        
+        value <<= 4;
+    }
+    *p = 0;
+    return hexToStringOutput;
+}
